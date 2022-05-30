@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module with a Blueprint object"""
+"""Module with a Blueprint object for the API"""
 from flask import jsonify
 from models import storage
 from api.v1.views.base_views import app_views
