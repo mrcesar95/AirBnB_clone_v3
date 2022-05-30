@@ -67,6 +67,67 @@ test_db_storage.py'])
             self.assertTrue(len(func[1].__doc__) >= 1,
                             "{:s} method needs a docstring".format(func[0]))
 
+        def test_dbs_func_undecorated_pep8(self):
+            """Test that DBStorage methods are PEP8 compliant"""
+            for func in self.dbs_f:
+                self.assertTrue(pep8.check_func(func[1]),
+                                "{:s} is not pep8 compliant".format(func[0]))
+
+
+class TestDBStorage(unittest.TestCase):
+    """Tests for DBStorage class"""
+
+    def setUp(self):
+        """Set up for each test"""
+        self.dbs = DBStorage()
+        self.dbs.reload()
+
+    def tearDown(self):
+        """Tear down after each test"""
+        del self.dbs
+
+    def test_dbs_attributes(self):
+        """Test for the presence of attributes"""
+        self.assertTrue(hasattr(self.dbs, "file_path"))
+        self.assertTrue(hasattr(self.dbs, "all"))
+
+    def test_dbs_file_path(self):
+        """Test for the correct file path"""
+        self.assertEqual(self.dbs.file_path, "file.json")
+
+    def test_dbs_all(self):
+        """Test for the all attribute"""
+        self.assertEqual(type(self.dbs.all), dict)
+
+    def test_dbs_new(self):
+        """Test for the new method"""
+        self.dbs.new(BaseModel())
+        self.assertEqual(len(self.dbs.all), 1)
+
+    def test_dbs_save(self):
+        """Test for the save method"""
+        self.dbs.save()
+        self.assertTrue(os.path.isfile("file.json"))
+
+    def test_dbs_reload(self):
+        """Test for the reload method"""
+        self.dbs.reload()
+        self.assertEqual(len(self.dbs.all), 0)
+
+    def test_dbs_delete(self):
+        """Test for the delete method"""
+        self.dbs.delete(self.dbs.all.keys()[0])
+        self.assertEqual(len(self.dbs.all), 0)
+
+    def test_dbs_get(self):
+        """Test for the get method"""
+        self.dbs.get(self.dbs.all.keys()[0])
+        self.assertEqual(len(self.dbs.all), 0)
+
+    def test_dbs_count(self):
+        """Test for the count method"""
+        self.assertEqual(self.dbs.count(), 0)
+
 
 class TestFileStorage(unittest.TestCase):
     """Test the FileStorage class"""
@@ -86,3 +147,19 @@ class TestFileStorage(unittest.TestCase):
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_save(self):
         """Test that save properly saves objects to file.json"""
+
+        @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
+        def test_reload(self):
+            """Test that reload properly reloads objects from file.json"""
+
+        @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
+        def test_delete(self):
+            """Test that delete properly deletes objects from file.json"""
+
+        @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
+        def test_get(self):
+            """Test that get properly gets objects from file.json"""
+
+        @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
+        def test_count(self):
+            """Test that count returns the correct number of objects"""
