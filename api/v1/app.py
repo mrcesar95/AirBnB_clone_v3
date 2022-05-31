@@ -4,9 +4,11 @@ from flask import Flask, jsonify, make_response
 from models import storage
 from os import getenv
 from api.v1.views.index import app_views
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.register_blueprint(app_views)
+CORS(app, resources={r"/api/v1/*": {"origins": ["0.0.0.0"]}})
 
 
 @app.errorhandler(404)
@@ -22,6 +24,10 @@ def close(execute):
 
 
 if __name__ == '__main__':
-    env_host = getenv('HBNB_API_HOST', default='0.0.0.0')
-    env_port = getenv('HBNB_API_PORT', default='5000')
-    app.run(host=env_host, port=env_port, threaded=True)
+    host = getenv('HBNB_API_HOST')
+    if host is None:
+        host = '0.0.0.0'
+    port = getenv('HBNB_API_PORT')
+    if port is None:
+        port = 5000
+    app.run(host=host, port=port, threaded=True)
