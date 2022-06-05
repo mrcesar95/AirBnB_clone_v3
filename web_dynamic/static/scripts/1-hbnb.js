@@ -1,14 +1,6 @@
 window.onload = () => {
-  const checked = [];
-  const checkbox = $('.amenities input[type="checkbox"]');
-
-  checkbox.addEventListener('click', function() {
-    if(checkbox.checked){
-      checked = ('.amenity.id')
-    } else {
-      const element = document.getElementById("amenity.id");
-      element.remove('.amenity.id');
-    }
-  })
-
+    const $ = document.querySelector(".list");
+    const $removeItem = document.querySelector("#remove_item");
+    const $clearList = document.querySelector("#clear_list");
 };
+

@@ -7,9 +7,10 @@
     <link rel="stylesheet" type="text/css" href="../static/styles/3-footer.css?{{ cache_id }}">
     <link rel="stylesheet" type="text/css" href="../static/styles/6-filters.css?{{ cache_id }}">
     <link type="text/css" rel="stylesheet" href="../static/styles/8-places.css?{{ cache_id }}">
-    <link rel="icon" href="../static/images/icon.png?{{ cache_id }}"/>
-	<script defer type="module" src="/static/scripts/1-hbnb.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="/static/scripts/1-hbnb.js?{{ cache_id }}"></script>
+
+	<link rel="icon" href="/static/images/icon.png?{{ cache_id }}" />
+    
     <title>HBnB</title>
   </head>
   <body>
@@ -20,7 +21,7 @@
       <section class="filters">
 	<div class="locations">
 	  <h3>States</h3>
-	  <h4>&nbsp;</h4>
+	  <h4 id="query_amenities">&nbsp;</h4>
 	  <div class="popover">
 	    <ul>
 	      {% for state in states %}
@@ -38,18 +39,12 @@
 	</div>
 	<div class="amenities">
 	  <h3>Amenities</h3>
-	  <h4>&nbsp;</h4>
+	  <h4 id="amenities">&nbsp;</h4>
 	  <div class="popover">
-	    <ul>
+	    <ul id="list">
 	      {% for amenity in amenities %}
-	      <li>{{ amenity.name }} </li>
-	      {% for amenity in amenities %}
-		  <li> <input type="checkbox" 
-			style="margin-right: 10px"
-			data-id="{{ amenity.id }}" 
-			data-name="{{ amenity.name }}">
-			{{ amenity.name }}
-		 </li>
+	      <li><input class="prueba" type="checkbox" data-name="{{ amenity.name }}" data-id="{{ amenity.id }}">
+			{{ amenity.name }}</li>
 	      {% endfor %}
 	    </ul>
 	  </div>
