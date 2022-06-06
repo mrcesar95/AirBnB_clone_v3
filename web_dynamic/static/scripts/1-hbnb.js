@@ -1,17 +1,16 @@
 window.onload = () => {
+ //let amenities = document.querySelectorAll(".list")
+  let prueba = document.getElementById(".amen_list");
+  let select = document.getElementById("list_check")
+  let amenity = [];
 
-	const amenitiesDict = {};
-	const amenities = document.querySelectorAll('.list_check');
-	const checkbox = document.getElementById('list');
-    const amenityName = document.getElementsByName('data-name');
-    const amenityId = documnet.getElementsByName('data-id');
+  const checkbox = document.getElementById('list')
 
-
-	checkbox.addEventListener('change', (event) => {
-	  if (event.currentTarget.checked) {
-        amenitiesDict.set(amenityId, amenityName);
-	  } else {
-		amenitiesDict.remove(amenityId);
-	  }
-	})
+  checkbox.addEventListener('change', (event) => {
+	if (event.currentTarget.checked) {
+	  alert('checked');
+	} else {
+	  alert('not checked');
+	}
+  })
 }
