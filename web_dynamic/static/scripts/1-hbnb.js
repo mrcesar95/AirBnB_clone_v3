@@ -1,6 +1,17 @@
 window.onload = () => {
-    const $ = document.querySelector(".list");
-    const $removeItem = document.querySelector("#remove_item");
-    const $clearList = document.querySelector("#clear_list");
-};
 
+	const amenitiesDict = {};
+	const amenities = document.querySelectorAll('.list_check');
+	
+	const checkbox = document.getElementById('list');
+
+
+	checkbox.addEventListener('change', (event) => {
+	  if (event.currentTarget.checked) {
+		alert('checked')
+		;
+	  } else {
+		alert('not checked');
+	  }
+	})
+}

@@ -39,11 +39,11 @@
 	</div>
 	<div class="amenities">
 	  <h3>Amenities</h3>
-	  <h4 id="amenities">&nbsp;</h4>
+	  <h4 id="list_check">&nbsp;</h4>
 	  <div class="popover">
-	    <ul id="list">
+	    <ul>
 	      {% for amenity in amenities %}
-	      <li><input class="prueba" type="checkbox" data-name="{{ amenity.name }}" data-id="{{ amenity.id }}">
+	      <li><input id="list" type="checkbox" data-name="{{ amenity.name }}" data-id="{{ amenity.id }}">
 			{{ amenity.name }}</li>
 	      {% endfor %}
 	    </ul>
