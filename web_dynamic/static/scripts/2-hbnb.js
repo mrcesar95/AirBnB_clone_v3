@@ -11,4 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector(".amenities h4").textContent = Object.values(checked_list).join(', ');
         });
     });
-})
+
+    const api_status = document.querySelector('div#api_status');
+    fetch("http://localhost:5001/api/v1/status/").then((response) => {
+        if (response.ok) {
+            api_status.className += " available";
+        }
+        else {
+            api_status.className.replace(" available", '');
+        }
+    });
+});
+

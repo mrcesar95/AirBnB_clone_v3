@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../static/styles/3-footer.css?{{ cache_id }}">
     <link rel="stylesheet" type="text/css" href="../static/styles/6-filters.css?{{ cache_id }}">
     <link type="text/css" rel="stylesheet" href="../static/styles/8-places.css?{{ cache_id }}">
-	<script type="text/javascript" src="/static/scripts/1-hbnb.js?{{ cache_id }}"></script>
+	<script type="text/javascript" src="/static/scripts/2-hbnb.js?{{ cache_id }}"></script>
 
 	<link rel="icon" href="/static/images/icon.png?{{ cache_id }}" />
     
@@ -16,6 +16,7 @@
   <body>
     <header>
       <div class="logo"></div>
+	  <div id="api_status" class="available"></div>
     </header>
     <div class="container">
       <section class="filters">
@@ -74,7 +75,7 @@
 	</article>
 	{% endfor %}
       </section>
-    </div>
+	</div>
     <footer>
       <p>Holberton School</p>
     </footer>
