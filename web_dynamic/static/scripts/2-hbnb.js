@@ -12,14 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const api_status = document.querySelector('div#api_status');
-    fetch("http://localhost:5001/api/v1/status/").then((response) => {
-        if (response.ok) {
-            api_status.className += " available";
+    async function apiStatus(){
+        const response = await fetch("http://localhost:5001/api/v1/status");
+        const data = await response.json();
+        if (data.status === 'OK') {
+            let elemento = document.getElementById('api_status')
+            elemento.className += 'available'
         }
-        else {
-            api_status.className.replace(" available", '');
-        }
-    });
+    }
+    apiStatus();
 });
+
 
