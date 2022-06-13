@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!xhr.responseText && xhr.readyState !== 'complete') return
             const result = JSON.parse(xhr.responseText) 
             const [places] = document.getElementsByClassName('places')
+            places.innerHTML = " "
             for (const place of result) {
                 const places_html = [
                     `<article>`,
@@ -58,5 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify({}));
     }
-    fetchPlaces();
+    const button_filter = document.getElementById("button_filter");
+    button_filter.addEventListener("click", fetchPlaces);
 });

@@ -6,8 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checks.addEventListener("change", function () {
             if (this.checked) {
                 checked_list[checks.getAttribute('data-id')] = checks.getAttribute('data-name');
-            }
-            else {
+            } else {
                 delete checked_list[checks.getAttribute('data-id')];
             }
             document.querySelector(".amenities h4").textContent = Object.values(checked_list).join(', ');
@@ -19,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await fetch("http://localhost:5001/api/v1/status");
             const data = await response.json();
-            console.log(data.status);
             if (data.status !== 'OK') {
                 let elemento = document.getElementById('api_status')
                 elemento.className = ''
@@ -36,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const result = JSON.parse(xhr.responseText) 
             const [places] = document.getElementsByClassName('places')
             places.innerHTML = " "
-            console.log("123")
+            console.log("Laura");
             for (const place of result) {
                 const places_html = [
                     `<article>`,
@@ -58,7 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         xhr.open("POST", 'http://localhost:5001/api/v1/places_search', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify({}));
+        xhr.send(JSON.stringify({amenities: checked_list}));
     }
-    fetchPlaces();
+    const button_filter = document.getElementById("button_filter");
+    button_filter.addEventListener("click", fetchPlaces);
 });
+
