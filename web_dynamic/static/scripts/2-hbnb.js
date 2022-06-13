@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     async function apiStatus(){
         const response = await fetch("http://localhost:5001/api/v1/status");
         const data = await response.json();
-        if (data.status === 'OK') {
+        if (data.status !== 'OK') {
             let elemento = document.getElementById('api_status')
-            elemento.className += 'available'
+            elemento.className = ''
         }
     }
     apiStatus();

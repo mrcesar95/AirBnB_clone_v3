@@ -35,8 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!xhr.responseText && xhr.readyState !== 'complete') return
             const result = JSON.parse(xhr.responseText) 
             const [places] = document.getElementsByClassName('places')
-            places.innerHTML = " "
-            console.log("123")
             for (const place of result) {
                 const places_html = [
                     `<article>`,
